@@ -6,7 +6,7 @@
 /*   By: khuynh <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 11:49:56 by khuynh            #+#    #+#             */
-/*   Updated: 2022/02/13 14:30:20 by odessein         ###   ########.fr       */
+/*   Updated: 2022/02/13 16:37:25 by odessein         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,24 @@ int	ft_ultimate_check(int tab[4][4], int line, int col, int input[16])
 /*	if (check_dbl(tab[line][col], tab, col, line))
 		return (1); */
 	return (0);
+}
+
+int	ft_final_check(int	matrix[4][4], int input[16])
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < 4)
+	{
+		j = 0;
+		while (j < 4)
+		{
+			if (ft_ultimate_check(matrix, i, j, input) != 1)
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: odessein <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 13:11:37 by odessein          #+#    #+#             */
-/*   Updated: 2022/02/13 14:39:15 by odessein         ###   ########.fr       */
+/*   Updated: 2022/02/13 17:37:32 by odessein         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -19,19 +19,17 @@ int		ft_strlen(char *str);
 void	ft_obvious(int skyscraper[4][4], int input[16]);
 int		ft_check_0(int skyscraper[4][4]);
 int		ft_ultimate_check(int tab[4][4], int line, int col, int input[16]);
+int		ft_final_check(int	matrix[4][4], int input[16]);
 
 
 int	ft_solve(int to_fill[4][4], int line, int column, int tabs[16], int n)
 {
-	n++;
-	//printf("%i \n", line);
-	if (ft_check_0(to_fill))
+	if (ft_final_check(to_fill, tabs) == 1)
 		return (1);
-	else if (n == 50)
-		return 1;
 	else if (line >= 4)
 	{
-		ft_solve(to_fill, 0, 0, tabs , n);
+		//ft_solve(to_fill, 0, 0, tabs , n);
+		return (1);
 	}
 	else if (column >= 4)
 		ft_solve(to_fill, ++line, (column - 4), tabs, n);
@@ -39,11 +37,10 @@ int	ft_solve(int to_fill[4][4], int line, int column, int tabs[16], int n)
 	{
 		while (ft_ultimate_check(to_fill, line, column, tabs) != 1 && to_fill[line][column] < 6)
 		{
-//			printf("%i ", to_fill[line][column]);
 			++to_fill[line][column];
 		}
 		if (to_fill[line][column] > 4)
-			to_fill[line][column] = 0;
+			to_fill[line][column] = 1;
 	}
 	ft_solve(to_fill, line, ++column, tabs, n);
 }
@@ -60,7 +57,7 @@ int	main(int argc, char *argv[])
 	ft_init(skyscraper);
 	if (ft_split_arg(input_str, input) == 1)
 		return (-1);
-	ft_obvious(skyscraper, input);
+//	ft_obvious(skyscraper, input);
 	if (ft_solve(skyscraper, 0, 0, input, 0) == 1)
 		ft_display(skyscraper);
 	return (0);

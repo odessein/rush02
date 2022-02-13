@@ -6,7 +6,7 @@
 /*   By: odessein <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 12:14:46 by odessein          #+#    #+#             */
-/*   Updated: 2022/02/13 14:30:17 by odessein         ###   ########.fr       */
+/*   Updated: 2022/02/13 16:09:35 by odessein         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -21,7 +21,6 @@ int	ft_chk_raw_l_val(int skyscraper[4][4], int line, int input[16])
 	tall = 0;
 	count = 0;
 	buf_input = input[8 + line]; //value inputed pour la line actuel a gauche
-//	printf("%i ", buf_input);	
 	if (buf_input == 1 || buf_input == 4)
 		return (1);
 	while (++i < 4)
@@ -52,9 +51,7 @@ int	ft_chk_raw_r_val(int skyscraper[4][4], int line, int input[16])
 	count = 0;
 	buf_input = input[12 + line]; //value inputed pour la line actuel a droite
 	if (buf_input == 1 || buf_input == 4)
-	{
 		return (1);
-	}
 	while (--i > -1)
 	{
 		if (skyscraper[line][i] == 0)
@@ -104,8 +101,10 @@ int	ft_chk_col_d_val(int skyscraper[4][4], int col, int input[16])
 	int	tall;
 	int	count;
 	int	i;
+	int	j;
 
 	i = 4;
+	j = 0;
 	tall = 0;
 	count = 0;
 	buf_input = input[4 + col]; //value inputed pour la col actuel en bas 
@@ -120,8 +119,9 @@ int	ft_chk_col_d_val(int skyscraper[4][4], int col, int input[16])
 			count++;
 			tall = skyscraper[i][col];
 		}
+		j++;
 	}
-	if (count == buf_input)
+	if (count == buf_input && i == 0)
 		return (1);
 	return (0);
 }
