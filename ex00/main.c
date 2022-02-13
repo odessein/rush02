@@ -6,7 +6,7 @@
 /*   By: odessein <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 13:11:37 by odessein          #+#    #+#             */
-/*   Updated: 2022/02/13 12:23:58 by odessein         ###   ########.fr       */
+/*   Updated: 2022/02/13 12:38:52 by odessein         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -18,9 +18,10 @@ int		ft_split_arg(char *str, int tab[16]);
 int		ft_strlen(char *str);
 void	ft_obvious(int skyscraper[4][4], int input[16]);
 
-void	ft_solve(int to_fill[4][4], int line, int column, int tabs[16])
+int	ft_solve(int to_fill[4][4], int line, int column, int tabs[16])
 {
-	//if (check 0) fAUX RETURN
+	if (ft_check_0(to_fill[4][4]))
+		return (1);	
 	if (line == 4)
 		return (ft_solve(to_fill, 0, 0, tabs));
 	if (column == 4)
