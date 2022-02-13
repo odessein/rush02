@@ -6,7 +6,7 @@
 /*   By: odessein <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 15:48:08 by odessein          #+#    #+#             */
-/*   Updated: 2022/02/12 20:00:13 by odessein         ###   ########.fr       */
+/*   Updated: 2022/02/13 09:22:50 by khuynh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -23,7 +23,7 @@ void	ft_init(int skyscraper[4][4])
 		j = 0;
 		while (j < 4)
 		{
-			skyscraper[i][j] = 0;
+			skyscraper[i][j] = 0; // skyscraper = malloc(sizeof(int)*
 			j++;
 		}
 		i++;
@@ -78,7 +78,7 @@ int	ft_split_arg(char *str, int tab[16])
 	{
 		if ((str[i] >= '1') && (str[i] <= '4') && (ref == 0))
 		{
-			tab[j] = str[i] - '0';
+			tab[j] = str[i] - '0'; //tab = malloc(sizeof(int)*j); if tab == NULL, return (0); 
 			ref = 1;
 			j++;
 		}
