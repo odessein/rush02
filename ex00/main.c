@@ -6,7 +6,7 @@
 /*   By: odessein <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 13:11:37 by odessein          #+#    #+#             */
-/*   Updated: 2022/02/12 20:42:48 by odessein         ###   ########.fr       */
+/*   Updated: 2022/02/13 12:00:11 by odessein         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -20,8 +20,9 @@ void	ft_obvious(int skyscraper[4][4], int input[16]);
 
 void	ft_solve(int to_fill[4][4], int line, int column, int tabs[16])
 {
+	//if (check 0) fAUX RETURN
 	if (line == 4)
-		return ;
+		return (ft_solve(to_fill, 0, 0, tabs));
 	if (column == 4)
 		return (ft_solve(to_fill, ++line, (column - 4), tabs));
 }
